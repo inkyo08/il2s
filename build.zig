@@ -16,6 +16,7 @@ pub fn build(b: *std.Build) void {
     });
 
     exe.linkLibC();
+    exe.linkSystemLibrary("SDL3");
 
     b.installArtifact(exe);
 
