@@ -4,11 +4,19 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+    const heap_module = b.createModule(.{
+        .root_source_file = b.path("src/heap/heap.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
     const game_module = b.createModule(.{
         .root_source_file = b.path("src/game/main.zig"),
         .target = target,
         .optimize = optimize,
     });
+
+    game_module.addImport("heap", heap_module);
 
     const exe = b.addExecutable(.{
         .name = "game",
@@ -16,6 +24,7 @@ pub fn build(b: *std.Build) void {
     });
 
     exe.linkLibC();
+    exe.linkSystemLibrary("mimalloc");
     exe.linkSystemLibrary("SDL3");
 
     b.installArtifact(exe);
