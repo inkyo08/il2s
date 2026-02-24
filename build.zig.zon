@@ -1,0 +1,11 @@
+.{
+    .name = .il2s,
+    .version = "0.0.0",
+    .fingerprint = 0x2db21263dae1245,
+    .minimum_zig_version = "0.15.2",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}

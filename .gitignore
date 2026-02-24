@@ -1,0 +1,9 @@
+.zig-cache/
+zig-out/
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+Thumbs.db
+Desktop.ini
